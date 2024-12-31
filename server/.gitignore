@@ -1,0 +1,65 @@
+# Ignore .NET build results
+bin/
+obj/
+
+# Ignore user-specific files
+*.csproj.user
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Ignore logs
+*.log
+logs/
+
+# Ignore temporary files
+*~
+*.temp
+*.tmp
+
+# Ignore build output
+artifacts/
+
+# Ignore publish output
+publish/
+
+# Ignore npm packages
+node_modules/
+
+# Ignore sensitive data files
+appsettings.json
+appsettings.Development.json
+secrets.json
+
+# Ignore SQLite database files
+*.db
+*.sqlite
+*.sqlite3
+*.sqlite-shm
+*.sqlite-wal
+
+# Ignore IDE-specific files
+.vscode/
+.idea/
+.vscode/*
+
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore packages
+*.nupkg
+*.snupkg
+
+# Ignore lock files
+project.lock.json
+project.fragment.lock.json
+
+# Ignore other configurations
+.env
+.env.local
+
+# Ignore temporary files from editors
+*.swp
+*.swo

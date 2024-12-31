@@ -1,0 +1,69 @@
+# Node modules
+node_modules/
+
+# Logs
+*.log
+logs/
+
+# Dependency directories
+bower_components/
+jspm_packages/
+
+# Build output directories
+dist/
+build/
+
+# Environment variables
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+
+# Cache directories
+.cache/
+.tmp/
+
+# Editor directories and files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Temporary files from editors
+*.swp
+*.swo
+*~
+
+# Package lock files
+package-lock.json
+yarn.lock
+
+# Coverage directory used by testing tools
+coverage/
+
+# TypeScript output
+*.tsbuildinfo
+
+# Vite specific
+.vite/
+.vite_cache/
+
+# TailwindCSS
+tailwind.config.js
+tailwind.config.cjs
+
+# PostCSS
+postcss.config.js
+postcss.config.cjs
+
+# Storybook files (if using Storybook for component documentation/testing)
+.storybook/
+dist-storybook/
+
+# Nuxt.js specific files (if using Nuxt)
+.nuxt/
