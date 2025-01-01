@@ -11,7 +11,7 @@
     </div>
   </nav>
   <main class="max-w-5xl w-full my-6 mx-auto flex-grow flex flex-col">
-    <router-view @login-success="checkAuth" />
+    <router-view @login-success="handleLoginSuccess" />
   </main>
   <footer class="bg-gray-900 text-gray-300 p-4">
     <p class="text-center">Copyright &copy;</p>
@@ -19,6 +19,8 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   data() {
     return {
@@ -26,14 +28,21 @@ export default {
     }
   },
   methods: {
-    checkAuth() {
-      const token = localStorage.getItem('jwt')
-      this.isLoggedIn = !!token
+    async checkAuth() {
+      try {
+        const response = await axios.get('/auth/auth-state', { withCredentials: true })
+        this.isLoggedIn = response.data.authenticated
+      } catch (error) {
+        this.isLoggedIn = false
+      }
     },
-    logout() {
-      localStorage.removeItem('jwt')
+    async logout() {
+      await axios.post('/auth/logout')
       this.isLoggedIn = false
       this.$router.push('/login')
+    },
+    handleLoginSuccess() {
+      this.checkAuth()
     }
   },
   mounted() {

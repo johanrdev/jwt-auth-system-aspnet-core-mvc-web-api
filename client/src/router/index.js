@@ -3,6 +3,7 @@ import Home from '../views/HomeView.vue'
 import Login from '../views/LoginView.vue'
 import Register from '../views/RegisterView.vue'
 import Profile from '../views/ProfileView.vue'
+import axios from 'axios'
 
 const routes = [
     { path: '/', component: Home },
@@ -16,16 +17,24 @@ const router = createRouter({
   routes,
 })
 
-router.beforeEach((to, from, next) => {
-  const token = localStorage.getItem('jwt')
-  const isAuthenticated = !!token
+router.beforeEach(async (to, from, next) => {
+  try {
+    const response = await axios.get('/auth/auth-state', { withCredentials: true })
+    const isAuthenticated = response.data.authenticated
 
-  if (to.meta.requiresAuth && !isAuthenticated) {
-    next('/login')
-  } else if (!to.meta.requiresAuth && isAuthenticated) {
-    next('/profile')
-  } else {
-    next()
+    if (to.meta.requiresAuth && !isAuthenticated) {
+      next('/login')
+    } else if (!to.meta.requiresAuth && isAuthenticated) {
+      next('/profile')
+    } else {
+      next()
+    }
+  } catch (error) {
+    if (to.meta.requiresAuth) {
+      next('/login')
+    } else {
+      next()
+    }
   }
 })
 
